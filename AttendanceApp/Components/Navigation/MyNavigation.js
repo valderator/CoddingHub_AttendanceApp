@@ -2,6 +2,7 @@ import { createStaticNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomePage from "../Screens/HomePage";
 import Profile from "../Screens/Profile";
+import Kindergarten from "../Screens/Kindergarten";
 
 const RootStack = createNativeStackNavigator(
     {
@@ -14,6 +15,9 @@ const RootStack = createNativeStackNavigator(
             },
             Profile: {
                 screen: Profile,
+            },
+            Kindergarten: {
+                screen: Kindergarten,
             },
         },
     }

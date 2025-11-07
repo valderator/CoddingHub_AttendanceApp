@@ -5,7 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function HomePage(){
 
-    const kindergartens = ["Kindergarten name", "Kindergarten name2", "Kindergarten name3", "Kindergarten name4", "Kindergarten name5"];
+    const kindergartens = [
+      {name: "Kindergarten name", children: ["Child 1", "Child 2", "Child 3"]}, 
+      {name: "Kindergarten name2", children: ["Child A", "Child B"]},
+      {name: "Kindergarten name3", children: ["Child X", "Child Y", "Child Z", "Child W", "Child V", "Child U", "Child T"]},
+      {name: "Kindergarten name4", children: ["Child Alpha", "Child Beta"]},
+      {name: "Kindergarten name5", children: ["Child Uno", "Child Dos", "Child Tres"]}
+    ];
 
     const navigation = useNavigation();
 
@@ -14,12 +20,15 @@ export default function HomePage(){
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TextInput style={styles.textInput} placeholder="Search for kindergarten name..."></TextInput>
 
-                {kindergartens.map((name, index) => (
+                {kindergartens.map((kindergarten, index) => (
                     <KindergartenBanner 
                       key={index} 
-                      name={name} 
+                      name={kindergarten.name} 
                       last={index == kindergartens.length - 1 ? true : false} 
-                      navigateTo={() => navigation.navigate('Profile')}/>
+                      navigateTo={() => {
+                        navigation.navigate('Kindergarten', {name: kindergarten.name, children: kindergarten.children})
+                      }
+                    }/>
                 ))}
 
             </ScrollView>
